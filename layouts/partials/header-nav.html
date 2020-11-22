@@ -1,0 +1,29 @@
+<nav id="nav-menu-container">
+    <ul class="nav-menu">
+<!--            <li class="menu-active"><a href="/index.html">Начало</a></li>-->
+<!--            <li><a href="/#about">За събитието</a></li>-->
+<!--            <li><a href="/#speakers">Треньори</a></li>-->
+<!--            <li><a href="/#schedule">Програма</a></li>-->
+<!--            <li><a href="/#venue">Къде</a></li>-->
+<!--            <li><a href="/#gallery">Галерия</a></li>-->
+<!--            <li><a href="/#contact">Контакти</a></li>-->
+<!--            <li class="buy-tickets"><a href="/#buy-tickets">Запази участие</a></li>-->
+
+        {{ $thisPage := . }}
+        {{ range .Site.Menus.main }}
+            {{ $active := or ($thisPage.IsMenuCurrent "main" .) ($thisPage.HasMenuCurrent "main" .) }}
+            {{ with .Page }}
+                {{ $active = or $active ( $.IsDescendant .)  }}
+            {{ end }}
+            {{ $url := urls.Parse .URL }}
+            {{ $baseurl := urls.Parse $.Site.Params.Baseurl }}
+            <li class="{{if $active }}active{{end}}">
+                <a href="{{ with .Page }}{{ .RelPermalink }}{{ else }}{{ .URL | relLangURL }}{{ end }}" {{ if ne $url.Host $baseurl.Host }}target="_blank" {{ end }}>
+                    <span {{if $active }} class="active"{{end}}>{{ .Name }}</span>
+                </a>
+            </li>
+        {{ end }}
+
+    </ul>
+</nav>
+

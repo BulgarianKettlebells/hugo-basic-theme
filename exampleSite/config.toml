@@ -1,0 +1,83 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Hugo Event Theme Example Site"
+
+theme = "event"
+#themedir = "../.."
+
+# Navigation
+[[menu.main]]
+    name = "Начало"
+    label = "Начало"
+    weight = 10
+    url = "/index.html"
+    hasChildren = false
+[[menu.main]]
+    name = "За събитието"
+    label = "За събитието"
+    weight = 20
+    url = "/#about"
+    hasChildren = false
+[[menu.main]]
+    name = "Треньори"
+    label = "Треньори"
+    weight = 30
+    url = "/#speakers"
+    hasChildren = false
+[[menu.main]]
+    name = "Програма"
+    label = "Програма"
+    weight = 40
+    url = "/#schedule"
+    hasChildren = false
+[[menu.main]]
+    name = "Къде"
+    label = "Къде"
+    weight = 50
+    url = "/#venue"
+    hasChildren = false
+[[menu.main]]
+    name = "Галерия"
+    label = "Галерия"
+    weight = 60
+    url = "/#gallery"
+    hasChildren = false
+[[menu.main]]
+    name = "Контакти"
+    label = "Контакти"
+    weight = 70
+    url = "/#contact"
+    hasChildren = false
+[[menu.main]]
+    name = "Запази участие"
+    label = "Запази участие"
+    weight = 80
+    url = "/#buy-tickets"
+    hasChildren = false
+
+# Module
+[module]
+  [module.hugoVersion]
+  [[module.imports]]
+  # We include the theme by "../.." above, but we need one module import for Hugo to detect us as a Hugo Module.
+  path="github.com/BulgarianKettlebells/hugo-event-theme"
+
+  [[module.mounts]]
+  source = "static"
+  target = "static"
+
+  [[module.mounts]]
+  source = "node_modules/@fortawesome/fontawesome-free/webfonts"
+  target = "static/webfonts"
+
+  [[module.mounts]]
+  source = "node_modules/jquery/dist/jquery.min.js"
+  target = "assets/vendor/js/jquery.min.js"
+
+  [[module.mounts]]
+  source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+  target = "assets/vendor/js/bootstrap.bundle.min.js"
+
+  [[module.mounts]]
+    source = "node_modules/jquery-easing/dist/jquery.easing.1.3.umd.min.js"
+    target = "assets/vendor/js/jquery.easing.min.js"

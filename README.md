@@ -1,2 +1,2 @@
-# hugo-basic-theme
-Hugo basic theme 
+# hugo-event-theme
+Hugo event theme 

@@ -1,0 +1,22 @@
+<!--Vendor js imports mounted from the node_modules-->
+{{ $jquery := resources.Get "vendor/js/jquery.min.js" }}
+{{ $bootstrap_bundle := resources.Get "vendor/js/bootstrap.bundle.min.js" }}
+{{ $jquery_easing := resources.Get "vendor/js/jquery.easing.min.js" }}
+
+<!--Vendor js imports direct resource inside assets-->
+{{ $validate := resources.Get "vendor/php-email-form/validate.js" -}}
+{{ $venobox := resources.Get "vendor/venobox/venobox.min.js" -}}
+{{ $owl_carousel := resources.Get "vendor/owl.carousel/owl.carousel.min.js" -}}
+{{ $superfish := resources.Get "vendor/superfish/superfish.min.js" -}}
+{{ $hoverIntent := resources.Get "vendor/hoverIntent/hoverIntent.js" -}}
+{{ $aos := resources.Get "vendor/aos/aos.js" -}}
+
+{{ $vendorsJs := slice $jquery $bootstrap_bundle $jquery_easing $validate $venobox $owl_carousel $superfish $hoverIntent $aos | resources.Concat "js/vendors_bundle.js" | resources.Minify | resources.Fingerprint "md5" }}
+
+<!--Theme custom js imports-->
+{{ $main := resources.Get "js/main.js" }}
+
+{{ $mainJs := slice $main | resources.Concat "js/main_bundle.js" | resources.Minify | resources.Fingerprint "md5" }}-->
+
+<script src="{{ $vendorsJs.RelPermalink }}"></script>
+<script src="{{ $mainJs.RelPermalink }}"></script>

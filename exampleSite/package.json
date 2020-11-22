@@ -1,0 +1,25 @@
+{
+  "name": "hugo-event",
+  "version": "1.0.0",
+  "description": "Hugo event theme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.1",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.5.1",
+    "jquery-easing": "0.0.1",
+    "popper.js": "^1.16.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "hugo",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikeSteiner/hugo-playground.git"
+  },
+  "author": "MikeSteiner",
+  "license": "MIT",
+  "homepage": "https://github.com/MikeSteiner/hugo-playground"
+}

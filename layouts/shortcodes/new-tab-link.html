@@ -1,6 +1,0 @@
-{{ if .IsNamedParams }}
-    <a href="{{ .Get "href" }}" target="_blank">{{.Inner}}</a>
-    <p>Test</p>
-{{ else }}
-    <a href="{{ .Get 0 }}" target="_blank">{{.Inner}}</a>
-{{ end }}

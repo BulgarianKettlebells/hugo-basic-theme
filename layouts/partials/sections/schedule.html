@@ -1,0 +1,43 @@
+<div class="container" data-aos="fade-up">
+
+    {{ $sectionName := "schedule" }}
+    {{ $schedulePage := (.Site.GetPage $sectionName) }}
+    <div class="section-header">
+        <h2>{{ $schedulePage.Title }}</h2>
+        <p>{{ $schedulePage.Summary }}</p>
+    </div>
+
+    <!--    Days buttons-->
+    <ul class="nav nav-tabs" role="tablist" data-aos="fade-up" data-aos-delay="100">
+        {{ range $schedulePage.Params.schedule }}
+        <li class="nav-item">
+            <a class="nav-link {{ if eq .active true }}active{{ end }}" href="{{ .href }}" role="tab" data-toggle="tab">{{ .title }}</a>
+        </li>
+        {{ end }}
+    </ul>
+
+    <h3 class="sub-heading">{{ $schedulePage.Content }}</h3>
+
+    <!--    Schedule loop-->
+    <div class="tab-content row justify-content-center" data-aos="fade-up" data-aos-delay="200">
+        {{ range $schedulePage.Params.schedule }}
+        <div role="tabpanel" class="col-lg-9 tab-pane fade {{ if eq .active true }}show active{{ end }}" id="{{ .id }}">
+            {{ range .items }}
+            <div class="row schedule-item">
+                <div class="col-md-2"><time>{{ .time }}</time></div>
+                <div class="col-md-10">
+                    {{ $avatarImg := .avatarImg }}
+                    {{ if $avatarImg }}
+                        <div class="speaker">
+                            <img src="{{ $avatarImg.src }}" alt="{{ $avatarImg.alt }}">
+                        </div>
+                    {{ end }}
+                    <h4>{{ .title | safeHTML }}</h4>
+                    {{ if .summary }}<p>{{ .summary | safeHTML }}</p>{{ end }}
+                </div>
+            </div>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</div>

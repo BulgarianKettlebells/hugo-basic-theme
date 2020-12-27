@@ -1,7 +1,12 @@
 <div class="intro-container" data-aos="zoom-in" data-aos-delay="100">
-    <h1 class="mb-4 pb-0">2020<br><span>Kettlebell</span> Experience</h1>
-    <p class="mb-4 pb-0">Стани част от първия по рода си в България двудневен семинар по Гиревой Фитнес с Юри Атанасов.
-        <br><br> 31 Октомври-01 Ноември, "Витоша Парк Хотел", София</p>
-    <a href="https://youtu.be/qtShuKo7qbI" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
-    <a href="#about" class="about-btn scrollto">За събитието</a>
+
+    {{ $sectionName := "intro" }}
+    {{ $introPage := (.Site.GetPage $sectionName) }}
+    <h1 class="mb-4 pb-0">{{ $introPage.Title | safeHTML }}</h1>
+    <p class="mb-4 pb-0">{{ $introPage.Content | safeHTML }}</p>
+
+    <a href="{{ $introPage.Params.videoUrl }}" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+    {{ with $introPage.Params.aboutButton }}
+        <a href="{{ .href }}" class="about-btn scrollto">{{ .label }}</a>
+    {{ end }}
 </div>

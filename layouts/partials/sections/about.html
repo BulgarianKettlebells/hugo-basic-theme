@@ -10,16 +10,18 @@
             <p>{{ $aboutPage.Content }}</p>
         </div>
 
-        {{ $where := $aboutPage.Params.where }}
-        <div class="col-lg-3">
-            <h3>{{ $where.title }}</h3>
-            <p>{{ $where.content }}</p>
-        </div>
+        {{ with $aboutPage.Params.where }}
+            <div class="col-lg-3">
+                <h3>{{ .title }}</h3>
+                <p>{{ .content }}</p>
+            </div>
+        {{ end }}
 
-        {{ $when := $aboutPage.Params.when }}
-        <div class="col-lg-3">
-            <h3>{{ $when.title }}</h3>
-            <p>{{ replace $when.content "\\n" "<br/>" | safeHTML }}</p>
-        </div>
+        {{ with $aboutPage.Params.when }}
+            <div class="col-lg-3">
+                <h3>{{ .title }}</h3>
+                <p>{{ replace .content "\\n" "<br/>" | safeHTML }}</p>
+            </div>
+        {{ end }}
     </div>
 </div>

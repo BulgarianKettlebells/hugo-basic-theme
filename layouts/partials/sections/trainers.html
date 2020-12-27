@@ -1,0 +1,46 @@
+<div class="container" data-aos="fade-up">
+
+    {{ $sectionName := "trainers" }}
+    {{ $trainersPage := (.Site.GetPage $sectionName) }}
+    <div class="section-header">
+        <h2>{{ $trainersPage.Title }}</h2>
+        <p>{{ $trainersPage.Summary }}</p>
+    </div>
+
+    {{ $sectionPages := (where .Site.RegularPages.ByTitle "Section" $sectionName) }}
+    {{ $sortBy := ".Params.weight" }}
+    <div class="row">
+        {{ range sort $sectionPages $sortBy "asc" }}
+        <div class="col-lg-4 col-md-6">
+            <div class="speaker" data-aos="fade-up" data-aos-delay="100">
+                <a href="{{ .Permalink }}">
+                    <img src="/img/trainers/{{ .Params.avatarImage.src }}" alt="{{ .Params.avatarImage.alt }}" class="img-fluid">
+                </a>
+                <div class="details">
+                    <h3><a href="{{ .Permalink }}">{{ .Title | humanize | title }}</a></h3>
+                    <p>{{ .Summary }}</p>
+                    <div class="social">
+
+                        {{ $social := .Page.Params.social }}
+                        {{ if $social.twitter }}
+                        <a href="{{ $social.twitter }}" target="_blank"><i class="fab fa-twitter-square"></i></a>
+                        {{ end }}
+                        {{ if $social.facebook }}
+                        <a href="{{ $social.facebook }}" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                        {{ end }}
+                        {{ if $social.instagram }}
+                        <a href="{{ $social.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
+                        {{ end }}
+                        {{ if $social.linkedin }}
+                        <a href="{{ $social.linkedin }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        {{ end }}
+                        {{ if $social.youtube }}
+                        <a href="{{ $social.youtube }}" target="_blank"><i class="fab fa-youtube-square"></i></a>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>

@@ -2,23 +2,24 @@
 
     {{ $sectionName := "about" }}
     {{ $aboutPage := (.Site.GetPage $sectionName) }}
+
     <div class="row">
         <div class="col-lg-6">
             <h2>{{ $aboutPage.Title }}</h2>
             <h4>{{ $aboutPage.Summary }}</h4>
             <p>{{ $aboutPage.Content }}</p>
         </div>
+
+        {{ $where := $aboutPage.Params.where }}
         <div class="col-lg-3">
-            {{ $where := $aboutPage.Params.where }}
             <h3>{{ $where.title }}</h3>
-            <p>{{ $where.content | safeHTML }}</p>
+            <p>{{ $where.content }}</p>
         </div>
+
+        {{ $when := $aboutPage.Params.when }}
         <div class="col-lg-3">
-            {{ $when := $aboutPage.Params.when }}
             <h3>{{ $when.title }}</h3>
-            <p>{{ $when.content | safeHTML }}</p>
+            <p>{{ replace $when.content "\\n" "<br/>" | safeHTML }}</p>
         </div>
     </div>
-
-
 </div>

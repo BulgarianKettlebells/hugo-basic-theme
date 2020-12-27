@@ -1,0 +1,39 @@
+<div class="container-fluid" data-aos="fade-up">
+
+    {{ $sectionName := "venue" }}
+    {{ $currentPage := (.Site.GetPage $sectionName) }}
+    <div class="section-header">
+        <h2>{{ $currentPage.Title }}</h2>
+        <p>{{ $currentPage.Summary }}</p>
+    </div>
+
+    <div class="row no-gutters">
+        <div class="col-lg-6 venue-map">
+            <iframe src="{{ $currentPage.Params.map.src }}" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+        <div class="col-lg-6 venue-info">
+            <div class="row justify-content-center">
+                {{ with $currentPage.Params.info }}
+                <div class="col-11 col-lg-8">
+                    <h3>{{ .title }}</h3>
+                    <p>{{ .summary }}</p>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid venue-gallery-container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row no-gutters">
+        {{ range $currentPage.Params.gallery }}
+        <div class="col-lg-3 col-md-4">
+            <div class="venue-gallery">
+                <a href="{{ .main.src }}" class="venobox" data-gall="venue-gallery">
+                    <img src="{{ .thumbnail.src }}" alt="{{ .thumbnail.alt }}" class="img-fluid">
+                </a>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>

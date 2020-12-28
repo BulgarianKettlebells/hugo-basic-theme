@@ -1,13 +1,13 @@
 <div class="container" data-aos="fade-up">
     {{ $sectionName := "tickets" }}
-    {{ $buyTicketsPage := (.Site.GetPage $sectionName) }}
-    <div class="section-header">
-        <h2>{{ $buyTicketsPage.Title }}</h2>
-        <p>{{ $buyTicketsPage.Summary }}</p>
-    </div>
+    {{ $currentPage := (.Site.GetPage $sectionName) }}
+
+    {{ with $currentPage }}
+        {{ partial "shared/section-header" . }}
+    {{ end}}
 
     <div class="row">
-        {{ $tickets := $buyTicketsPage.Params.cards }}
+        {{ $tickets := $currentPage.Params.cards }}
         {{ range $tickets -}}
             {{ $submitButton := .buttons.submit }}
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">

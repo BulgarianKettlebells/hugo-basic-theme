@@ -1,11 +1,11 @@
 <div class="container" data-aos="fade-up">
 
     {{ $sectionName := "trainers" }}
-    {{ $trainersPage := (.Site.GetPage $sectionName) }}
-    <div class="section-header">
-        <h2>{{ $trainersPage.Title }}</h2>
-        <p>{{ $trainersPage.Summary }}</p>
-    </div>
+    {{ $currentPage := (.Site.GetPage $sectionName) }}
+
+    {{ with $currentPage }}
+        {{ partial "shared/section-header" . }}
+    {{ end}}
 
     {{ $sectionPages := (where .Site.RegularPages.ByTitle "Section" $sectionName) }}
     {{ $sortBy := ".Params.weight" }}

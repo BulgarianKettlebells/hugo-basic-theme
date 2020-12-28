@@ -1,26 +1,25 @@
 <div class="container" data-aos="fade-up">
-
     {{ $sectionName := "schedule" }}
-    {{ $schedulePage := (.Site.GetPage $sectionName) }}
-    <div class="section-header">
-        <h2>{{ $schedulePage.Title }}</h2>
-        <p>{{ $schedulePage.Summary }}</p>
-    </div>
+    {{ $currentPage := (.Site.GetPage $sectionName) }}
+
+    {{ with $currentPage }}
+        {{ partial "shared/section-header" . }}
+    {{ end}}
 
     <!--    Days buttons-->
     <ul class="nav nav-tabs" role="tablist" data-aos="fade-up" data-aos-delay="100">
-        {{ range $schedulePage.Params.schedule }}
+        {{ range $currentPage.Params.schedule }}
         <li class="nav-item">
             <a class="nav-link {{ if eq .active true }}active{{ end }}" href="{{ .href }}" role="tab" data-toggle="tab">{{ .title }}</a>
         </li>
         {{ end }}
     </ul>
 
-    <h3 class="sub-heading">{{ $schedulePage.Content }}</h3>
+    <h3 class="sub-heading">{{ $currentPage.Content }}</h3>
 
     <!--    Schedule loop-->
     <div class="tab-content row justify-content-center" data-aos="fade-up" data-aos-delay="200">
-        {{ range $schedulePage.Params.schedule }}
+        {{ range $currentPage.Params.schedule }}
         <div role="tabpanel" class="col-lg-9 tab-pane fade {{ if eq .active true }}show active{{ end }}" id="{{ .id }}">
             {{ range .items }}
             <div class="row schedule-item">

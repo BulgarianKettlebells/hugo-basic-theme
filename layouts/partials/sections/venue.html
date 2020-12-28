@@ -1,11 +1,10 @@
 <div class="container-fluid" data-aos="fade-up">
-
     {{ $sectionName := "venue" }}
     {{ $currentPage := (.Site.GetPage $sectionName) }}
-    <div class="section-header">
-        <h2>{{ $currentPage.Title }}</h2>
-        <p>{{ $currentPage.Summary }}</p>
-    </div>
+
+    {{ with $currentPage }}
+        {{ partial "shared/section-header" . }}
+    {{ end}}
 
     <div class="row no-gutters">
         <div class="col-lg-6 venue-map">

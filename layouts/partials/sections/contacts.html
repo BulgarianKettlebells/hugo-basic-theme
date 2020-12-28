@@ -1,14 +1,13 @@
 <div class="container" data-aos="fade-up">
     {{ $sectionName := "contacts" }}
-    {{ $contactsPage := (.Site.GetPage $sectionName) }}
+    {{ $currentPage := (.Site.GetPage $sectionName) }}
 
-    <div class="section-header">
-        <h2>{{ $contactsPage.Title }}</h2>
-        <p>{{ $contactsPage.Summary }}</p>
-    </div>
+    {{ with $currentPage }}
+        {{ partial "shared/section-header" . }}
+    {{ end}}
 
     <div class="row contact-info">
-        {{ $address := $contactsPage.Params.address }}
+        {{ $address := $currentPage.Params.address }}
         <div class="col-md-4">
             <div class="contact-address">
                 <i class="ion-ios-location-outline"></i>
@@ -17,7 +16,7 @@
             </div>
         </div>
 
-        {{ $phone := $contactsPage.Params.phone }}
+        {{ $phone := $currentPage.Params.phone }}
         <div class="col-md-4">
             <div class="contact-phone">
                 <i class="ion-ios-telephone-outline"></i>
@@ -26,7 +25,7 @@
             </div>
         </div>
 
-        {{ $email := $contactsPage.Params.email }}
+        {{ $email := $currentPage.Params.email }}
         <div class="col-md-4">
             <div class="contact-email">
                 <i class="ion-ios-email-outline"></i>
@@ -37,7 +36,7 @@
 
     </div>
 
-    {{ $messageForm := $contactsPage.Params.messageForm }}
+    {{ $messageForm := $currentPage.Params.messageForm }}
     <div class="form">
         <form class="kwes-form php-email-form" action="https://kwes.io/api/foreign/forms/iE1QoTMCOl2j8WSyy9QO">
             <div class="form-row">

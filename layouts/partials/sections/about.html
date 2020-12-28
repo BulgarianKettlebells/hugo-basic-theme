@@ -1,23 +1,23 @@
 <div class="container" data-aos="fade-up">
 
     {{ $sectionName := "about" }}
-    {{ $aboutPage := (.Site.GetPage $sectionName) }}
+    {{ $currentPage := (.Site.GetPage $sectionName) }}
 
     <div class="row">
         <div class="col-lg-6">
-            <h2>{{ $aboutPage.Title }}</h2>
-            <h4>{{ $aboutPage.Summary }}</h4>
-            <p>{{ $aboutPage.Content }}</p>
+            <h2>{{ $currentPage.Title }}</h2>
+            <h4>{{ $currentPage.Summary }}</h4>
+            <p>{{ $currentPage.Content }}</p>
         </div>
 
-        {{ with $aboutPage.Params.where }}
+        {{ with $currentPage.Params.where }}
             <div class="col-lg-3">
                 <h3>{{ .title }}</h3>
                 <p>{{ .content }}</p>
             </div>
         {{ end }}
 
-        {{ with $aboutPage.Params.when }}
+        {{ with $currentPage.Params.when }}
             <div class="col-lg-3">
                 <h3>{{ .title }}</h3>
                 <p>{{ replace .content "\\n" "<br/>" | safeHTML }}</p>

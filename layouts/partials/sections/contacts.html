@@ -1,0 +1,65 @@
+<div class="container" data-aos="fade-up">
+    {{ $sectionName := "contacts" }}
+    {{ $contactsPage := (.Site.GetPage $sectionName) }}
+
+    <div class="section-header">
+        <h2>{{ $contactsPage.Title }}</h2>
+        <p>{{ $contactsPage.Summary }}</p>
+    </div>
+
+    <div class="row contact-info">
+        {{ $address := $contactsPage.Params.address }}
+        <div class="col-md-4">
+            <div class="contact-address">
+                <i class="ion-ios-location-outline"></i>
+                <h3>{{ $address.label }}</h3>
+                <address>{{ $address.street1 }}, {{ $address.street2 }}, {{ $address.postcode }}, {{ $address.city }}, {{ $address.country }}</address>
+            </div>
+        </div>
+
+        {{ $phone := $contactsPage.Params.phone }}
+        <div class="col-md-4">
+            <div class="contact-phone">
+                <i class="ion-ios-telephone-outline"></i>
+                <h3>{{ $phone.label }}</h3>
+                <p><a href="tel:{{ $phone.number }}">{{ $phone.humanReadableNumber }}</a></p>
+            </div>
+        </div>
+
+        {{ $email := $contactsPage.Params.email }}
+        <div class="col-md-4">
+            <div class="contact-email">
+                <i class="ion-ios-email-outline"></i>
+                <h3>{{ $email.label }}</h3>
+                <p><a href="mailto:{{ $email.email }}">{{ $email.email }}</a></p>
+            </div>
+        </div>
+
+    </div>
+
+    {{ $messageForm := $contactsPage.Params.messageForm }}
+    <div class="form">
+        <form class="kwes-form php-email-form" action="https://kwes.io/api/foreign/forms/iE1QoTMCOl2j8WSyy9QO">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="text" name="name" class="form-control" id="name" rules="required|max:255"placeholder="{{ $messageForm.name.label }}"/>
+                    <div class="validate"></div>
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="email" class="form-control" name="email" id="email" rules="required|email" placeholder="{{ $messageForm.email.label }}"/>
+                    <div class="validate"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" rules="required|max:255" placeholder="{{ $messageForm.subject.label }}"/>
+                <div class="validate"></div>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="message" rules="max:2048" rows="5" placeholder="{{ $messageForm.message.label }}"></textarea>
+                <div class="validate"></div>
+            </div>
+
+            <div class="text-center"><button type="submit">{{ $messageForm.submitButton.label }}</button></div>
+        </form>
+    </div>
+</div>

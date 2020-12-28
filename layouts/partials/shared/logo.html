@@ -1,0 +1,3 @@
+{{ $sectionName := "img" }}
+{{ $logo := (.Site.GetPage $sectionName).Params.logo.img }}
+<img src="{{ $logo.src }}" alt="{{ $logo.alt }}">

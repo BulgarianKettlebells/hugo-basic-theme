@@ -36,8 +36,7 @@
                     <strong>{{ $email.label }}: </strong><a href="mailto:{{ $email.email }}">{{ $email.email }}</a><br>
                 </p>
 
-                {{ $sectionName := "social" }}
-                {{ $social := (.Site.GetPage $sectionName).Params.links }}
+                {{ $social := $linksPage.Params.social }}
                 {{ .Scratch.Set "social" $social }}
                 {{ partial "shared/social-links.html" . }}
             </div>

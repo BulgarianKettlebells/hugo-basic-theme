@@ -1,3 +1,2 @@
-{{ $sectionName := "img" }}
-{{ $logo := (.Site.GetPage $sectionName).Params.logo.img }}
+{{ $logo := .Site.Params.logo }}
 <img src="{{ $logo.src }}" alt="{{ $logo.alt }}">

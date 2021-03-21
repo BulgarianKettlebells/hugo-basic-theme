@@ -1,0 +1,16 @@
+<div class="container" data-aos="fade-up">
+    {{ $sectionName := "gallery" }}
+    {{ $currentPage := (.Site.GetPage $sectionName) }}
+
+    {{ with $currentPage }}
+        {{ partial "shared/section-header" . }}
+    {{ end}}
+</div>
+
+<div class="owl-carousel gallery-carousel" data-aos="fade-up" data-aos-delay="100">
+    {{ range $currentPage.Params.gallery }}
+    <a href="{{ .main.src }}" class="venobox" data-gall="gallery-carousel">
+        <img src="{{ .thumbnail.src }}" alt="{{ .thumbnail.alt }}" class="img-fluid">
+    </a>
+    {{ end }}
+</div>

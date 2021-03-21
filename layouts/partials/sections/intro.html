@@ -1,12 +1,12 @@
 <div class="intro-container" data-aos="zoom-in" data-aos-delay="100">
 
     {{ $sectionName := "intro" }}
-    {{ $introPage := (.Site.GetPage $sectionName) }}
-    <h1 class="mb-4 pb-0">{{ $introPage.Title | safeHTML }}</h1>
-    <p class="mb-4 pb-0">{{ $introPage.Content | safeHTML }}</p>
+    {{ $currentPage := (.Site.GetPage $sectionName) }}
+    <h1 class="mb-4 pb-0">{{ $currentPage.Title | safeHTML }}</h1>
+    <p class="mb-4 pb-0">{{ $currentPage.Content | safeHTML }}</p>
 
-    <a href="{{ $introPage.Params.videoUrl }}" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
-    {{ with $introPage.Params.aboutButton }}
+    <a href="{{ $currentPage.Params.videoUrl }}" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+    {{ with $currentPage.Params.aboutButton }}
         <a href="{{ .href }}" class="about-btn scrollto">{{ .label }}</a>
     {{ end }}
 </div>

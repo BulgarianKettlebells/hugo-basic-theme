@@ -1,0 +1,35 @@
+{{ $useSquareIcon := .Scratch.Get "useSquareIcons" }}
+{{ $links := .Scratch.Get "social" }}
+
+<div class="social-links">
+    {{ if $links.twitter }}
+    <a href="{{ $links.twitter }}" target="_blank">
+        <i class="fab {{ if $useSquareIcon }}fa-twitter-square{{ else }}fa-twitter{{ end }}"></i>
+    </a>
+    {{ end }}
+    {{ if $links.facebook }}
+    <a href="{{ $links.facebook }}" target="_blank">
+        <i class="fab {{ if $useSquareIcon }}fa-facebook-square{{ else }}fa-facebook{{ end }}"></i>
+    </a>
+    {{ end }}
+    {{ if $links.instagram }}
+    <a href="{{ $links.instagram }}" target="_blank">
+        <i class="fab {{ if $useSquareIcon }}fa-instagram-square{{ else }}fa-instagram{{ end }}"></i>
+    </a>
+    {{ end }}
+    {{ if $links.googlePlus }}
+    <a href="{{ $links.googlePlus }}" target="_blank">
+        <i class="fab {{ if $useSquareIcon }}fa-google-plus-square{{ else }}fa-google-plus{{ end }}"></i>
+    </a>
+    {{ end }}
+    {{ if $links.linkedin }}
+    <a href="{{ $links.linkedin }}" target="_blank">
+        <i class="fab {{ if $useSquareIcon }}fa-linkedin{{ else }}fa-linkedin-in{{ end }}"></i>
+    </a>
+    {{ end }}
+    {{ if $links.youtube }}
+    <a href="{{ $links.youtube }}" target="_blank">
+        <i class="fab {{ if $useSquareIcon }}fa-youtube-square{{ else }}fa-youtube{{ end }}"></i>
+    </a>
+    {{ end }}
+</div>

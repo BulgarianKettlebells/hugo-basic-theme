@@ -1,0 +1,43 @@
+<div class="container" data-aos="fade-up">
+    {{ $sectionName := "tickets" }}
+    {{ $currentPage := (.Site.GetPage $sectionName) }}
+
+    {{ with $currentPage }}
+        {{ partial "shared/section-header" . }}
+    {{ end}}
+
+    <div class="row">
+        {{ $tickets := $currentPage.Params.cards }}
+        {{ range $tickets -}}
+            {{ $submitButton := .buttons.submit }}
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="card {{ if $submitButton.disabled }}card-disabled{{ end }} mb-5 mb-lg-0">
+                <div class="card-body disabled">
+                    <h5 class="card-title text-muted text-uppercase text-center">{{ .title }}</h5>
+                    <h6 class="card-price text-center">{{ .totalPrice }}</h6>
+                    <hr>
+                    <ul class="fa-ul">
+                        {{ range .includes -}}
+                            <li><span class="fa-li"><i class="fa fa-check"></i></span>{{ . }}</li>
+                        {{ end -}}
+                    </ul>
+                    <hr>
+
+                    {{ $submitButtonUrl := $submitButton.url }}
+                    {{ if $submitButton.disabled }}
+                        {{ $submitButtonUrl = "#" }}
+                    {{ end }}
+                    <div class="text-center">
+                        <a class="btn {{ if eq $submitButton.disabled true }}disabled{{ end }}"
+                           role="button"
+                           target="_blank" href="{{ $submitButtonUrl }}"
+                        >
+                            {{ $submitButton.label }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ end -}}
+    </div>
+</div>

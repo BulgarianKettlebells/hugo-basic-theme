@@ -10,6 +10,12 @@
   right: 0;
   transition: all 0.5s;
   z-index: 997;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 991px) {

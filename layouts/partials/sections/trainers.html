@@ -4,7 +4,7 @@
     {{ $currentPage := (.Site.GetPage $sectionName) }}
 
     {{ with $currentPage }}
-        {{ partial "shared/section-header" . }}
+    {{ partial "shared/section-header" . }}
     {{ end}}
 
     {{ $sectionPages := (where .Site.RegularPages.ByTitle "Section" $sectionName) }}
@@ -14,8 +14,9 @@
         <div class="col-lg-4 col-md-6">
             <div class="speaker" data-aos="fade-up" data-aos-delay="100">
                 <a href="{{ .Permalink }}">
+                    {{ $relPermalink := .RelPermalink }}
                     {{ with .Params.avatarImage }}
-                    <img src="{{ .src }}" alt="{{ .alt }}" class="img-fluid">
+                    <img src="{{ $relPermalink }}{{ .image }}" alt="{{ .alt }}" class="img-fluid">
                     {{ end }}
                 </a>
                 <div class="details">
